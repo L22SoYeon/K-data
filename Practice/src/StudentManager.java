@@ -21,7 +21,9 @@ public class StudentManager {
 		String name;
 		String address;
 		int phone;
-
+		int kor;
+		int eng;
+		int math;
 
 		System.out.println("번호를 입력하세요 : ");
 		num = n.nextInt();
@@ -29,15 +31,21 @@ public class StudentManager {
 		name = n.next();
 		System.out.println("주소를 입력하세요 : ");
 		address = n.next();
+		n.nextLine();
 		System.out.println("핸드폰 번호를 입력하세요 : ");
 		phone = n.nextInt();
+		System.out.println("국어 점수를 입력하세요 : ");
+		kor = n.nextInt();
+		System.out.println("영어 점수를 입력하세요 : ");
+		eng = n.nextInt();
+		System.out.println("수학 점수를 입력하세요 : ");
+		math = n.nextInt();
 
-
-		starray.add(new Student(num, name, address, phone));
+		starray.add(new Student(num, name, address, phone, kor, eng, math));
 	}
 
 	public void print() {
-		System.out.println("번호        이름        주소        핸번");
+		System.out.println("번호        이름        주소        핸번        국어        영어        수학");
 		Collections.sort(starray);
 		for (Student s : starray) 
 			System.out.println(s);
@@ -55,6 +63,10 @@ public class StudentManager {
 				System.out.println("번호 : " + s.getNum());
 				System.out.println("주소 : " + s.getAddress());
 				System.out.println("핸번 : " + s.getPhone());
+				System.out.println("국어 점수 : " + s.getKor());
+				System.out.println("영어 점수 : " + s.getEng());
+				System.out.println("수학 점수 : " + s.getMath());
+				System.out.println("총합 : " + s.getTotal());
 			}
 		}
 	}
@@ -72,15 +84,27 @@ public class StudentManager {
 				iterator.remove();
 			}
 		}
-		
-		/*for (Student s : starray) {
-			if (s.getName().equals(rname)) {
-				starray.remove(0);
-				System.out.println("삭제가 완료되었습니다.");
-			}
-		}*/
 	}
 
+	public void sum(){
+		int totalsum = 0;
+		System.out.print("총점 : ");
+	
+		for (Student s : starray) 
+			totalsum += s.getTotal();
+			System.out.println(totalsum);
+	}
+	
+	public void max(){
+		int max = 0;
+		System.out.println();
+	}
+	
+	public void minimum(){
+		
+	}
+	
+	
 	public void exit() {
 		System.exit(0);
 	}
