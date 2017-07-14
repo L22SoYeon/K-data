@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script src="./JS/jquery-3.2.1.js"></script>
+<script>
+	$(function() {
+		//alert("hahaha");
+
+		$("h1").css("color", "pink");
+		$("#test").css("color", "#62bcfa");
+		$("[type='text']").css("border-style", "solid").css("border-color",
+				"#bbc4ef");
+		//$("ol>li").css("color", "#474747");
+		//$("ol>li").eq(0).css("color", "purple");
+		//$("ol>li").eq(2).css("color", "pink");
+		//$("ol>li").parent().css("color","silver");
+		//$("ol>li").parent().parent().find("p").css("color","#6534ff");
+		//$("ol>li:even").css("color", "pink"); //동적
+		$("ol>li").filter(":even").css("color", "pink"); //정적
+
+	});
+</script>
+</head>
+<body>
+	<h1>안녕하세요</h1>
+	<h1 id="test">안녕하세요</h1>
+	<p>안녕하세요</p>
+
+	<input type="text">
+	<input type="password">
+
+	<ul>
+		<li>피자
+		<li>파스타
+	</ul>
+	<ol>
+		<li>피자
+		<li>파스타
+		<li>치킨
+	</ol>
+</body>
+</html>

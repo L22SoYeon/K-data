@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script src="./JS/jquery-3.2.1.js"></script>
+<script>
+	$(function() {
+		/* $("img").on("mouseover", function() {
+			$(this).attr("src", "kt2.jpg");
+		}).on("mouseout", function(){
+			$(this).attr("src", "kt.gif");
+		}); */
+
+		/* $("img").mouseover(function() {
+			$(this).attr("src", "kt2.jpg");
+		});
+		$("img").mouseout(function() {
+			$(this).attr("src", "kt.gif");
+		}) */
+
+		$("img").on({
+			mouseover : function() {
+				$(this).attr("src", "kt.gif");
+			},
+			mouseout : function() {
+				$(this).attr("src", "kt2.jpg");
+			}
+
+		})
+
+		$("#all").on({
+			click : function() {
+				$("[type=checkbox]").prop("checked", $("#all").prop("checked"));
+			}
+		})
+		
+		console.log($("#all").attr("checked")); //undefined
+		console.log($("#all").prop("checked")); //false
+		
+		
+	});
+</script>
+</head>
+<body>
+	<img src="kt.gif">
+
+	<input type="checkbox" id="all">모두선택
+	<br>
+	<input type="checkbox">1번
+	<input type="checkbox">2번
+	<input type="checkbox">3번
+</body>
+</html>

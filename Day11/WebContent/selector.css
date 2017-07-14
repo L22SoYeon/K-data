@@ -1,0 +1,19 @@
+@CHARSET "UTF-8";
+
+/* * {
+	color: #0080ff;
+} */
+/* div>span {
+	color: blue;
+} */
+div span {
+	color: blue
+}
+
+.test>li {
+	color: orange;
+}
+
+#aaa {
+	color: pink
+}

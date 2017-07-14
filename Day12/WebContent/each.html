@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script src="./JS/jquery-3.2.1.js"></script>
+<script>
+	$(function() {
+		/* //숫자 배열
+		var a = [ 1, 2, 3, 4 ];
+
+		console.log(a.length);
+
+		for (var i = 0; i < a.length; i++)
+			console.log(a[i]);
+
+		$.each(a, function(index, item) {
+			console.log(index);
+		});
+
+		$.each(a, function(index, item) {
+			console.log(item);
+		});
+
+		//문자 배열
+		var b = [ "홍길동1", "홍길동2", "홍길동3", "홍길동4" ];
+
+		$.each(b, function(index, item) {
+			console.log(index);
+		});
+
+		$.each(b, function(index, item) {
+			console.log(item);
+		});*/
+
+		//객체 배열
+		var c = [ {
+			num : 1,
+			name : "민경훈"
+		}, {
+			num : 2,
+			name : "이종석"
+		} ];
+
+		/* $.each(c, function(index, item) {
+			console.log(index);
+		}); */
+
+		/* $.each(c, function(index, item) {
+			console.log(item);
+		}); */
+
+		/* $.each(c, function(index, item) {
+			console.log(item.num);
+		}); */
+
+		/* $.each(c, function(index, item) {
+			console.log(item.name);
+		});  */
+
+		
+		$("li").each(function(index,item){
+			//console.log(item);
+			console.log($(item));
+			$(item).css("color", "red");
+		});
+	})
+</script>
+</head>
+<body>
+	<input type="button" value="버튼">
+	<ul>
+		<li>1
+		<li>2
+		<li>3
+		<li>4
+	</ul>
+	<span></span>
+</body>
+</html>

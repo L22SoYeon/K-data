@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+f
+<script>
+	$(function() {
+		$("#bt").click(function() {
+			//$("div").html("<h1>html()</h>");
+			//$("div").append("<h1>append()</h1>");
+			//$("div").prepend("<h1>prepend()</h1>");
+
+			//$("<h1>prependTo</h2></h1>").prependTo("div");
+			//$("<h1>appendTo</h2></h1>").appendTo("div");
+			//$("<h1>prependTo</h2></h1>").prependTo("div");
+
+			//$("div").before("<h1>before()</h1>");
+
+			$("div").append("<h1><li>" + $("#txt").val() + "</h1>");
+		})
+	});
+</script>
+</head>
+<body>
+	<input type="text" id="txt">
+	<input type="button" value="DOM 테스트" id="bt">;
+	<div>
+		<ul></ul>
+		<ol></ol>
+	</div>
+
+</body>
+</html>

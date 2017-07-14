@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<style>
+#txt {
+	color: silver;
+}
+</style>
+<script src="./JS/jquery-3.2.1.js"></script>
+<script>
+	$(function() {
+		alert("시작!");
+		/* 
+		--방법1--
+		$("#bt1").on("click", function() {
+			alert("버튼 클릭");
+		}); */
+
+		/* --방법2--
+		$("#bt1").click(function() {
+			alert("버튼 클릭");
+		}); */
+
+		$("#bt1").click(function() {
+			//$("#txt").val("버튼 내용");
+			//alert($("#txt").val());
+			//$("span").text($("#txt").val());
+			//$("span").html("<h1>" + $("#txt").val() + "</h1>");
+			
+			//console.log($(this).prev().prev().next());
+			//$(this).prev().prev().css("color", "blue");
+			
+			//$("#txt2").val($("#txt").val());
+			
+			//$("#txt2").val()-$("#txt").val()
+			
+			var a = $("#txt").val();
+			var b = $("#txt2").val();
+			$(this).next().html(a-b);
+			
+			console.log($(this).next());
+
+		})
+	});
+</script>
+</head>
+<body>
+	<input type="text" id="txt">
+	<input type="text" id="txt2">
+	<input type="button" value="이벤트 연습" id="bt1"><span></span>
+</body>
+</html>
