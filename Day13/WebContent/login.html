@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script src="./JS/jquery-3.2.1.js"></script>
+<script>
+	$(function() {
+		$("legend").css("color", "pink");
+		
+		$("#form1").submit(function(e) {
+			if ($("#id").val() == "") {
+				alert("아이디를 입력하세요");
+				$("#id").focus();
+				e.preventDefault();
+			}
+			else if ($("#pwd").val() == "") {
+				alert("비밀번호를 입력하세요");
+				$("#pwd").focus();
+				e.preventDefault();
+			}
+		})
+	
+		
+		
+		
+	})
+</script>
+</head>
+<body>
+	<form action="login" id="form1">
+		<fieldset>
+			<legend>login-servlet</legend>
+			<ul class="test">
+				<li>아이디 : <input type="text" name="id" id="id">
+				<li>비밀번호 : <input type="password" name="pwd" id="pwd">
+			</ul>
+			<input type="submit" value="로그인">
+		</fieldset>
+	</form>
+
+	<form action="login.jsp" id="form2">
+		<fieldset>
+			<legend>login-jsp</legend>
+			<ul class="test">
+				<li>아이디 : <input type="text" name="id" id="id">
+				<li>비밀번호 : <input type="password" name="pwd" id="pwd">
+			</ul>
+			<input type="submit" value="로그인">
+		</fieldset>
+	</form>
+</body>
+</html>
