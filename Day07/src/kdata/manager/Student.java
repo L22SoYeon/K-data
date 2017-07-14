@@ -4,8 +4,8 @@ public class Student {
 	private String sId;
 	private String sName;
 	private String sex;
-	
-	public Student(String sId, String sName, String sex){
+
+	public Student(String sId, String sName, String sex) {
 		this.sId = sId;
 		this.sName = sName;
 		this.sex = sex;
@@ -40,7 +40,4 @@ public class Student {
 		return "sId=" + sId + ", sName=" + sName + ", sex=" + sex;
 	}
 
-	
-	
-	
 }

@@ -11,7 +11,6 @@ import java.sql.SQLException;
  * 
  * @author cse
  */
-
 public class DBUtil {
 	private static final String CON_URL = "jdbc:oracle:thin:@localhost:1521";
 	private static final String USER_NAME = "test";
@@ -32,8 +31,13 @@ public class DBUtil {
 	 * @return Connection 데이터 베이스 연결 정보 객체 반환
 	 * @throws SQLException
 	 */
-	public static Connection getConnection() throws SQLException {
-		return DriverManager.getConnection(CON_URL, USER_NAME, USER_PWD);
+	public static Connection getConnection() {
+		try {
+			return DriverManager.getConnection(CON_URL, USER_NAME, USER_PWD);
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return null;
 	}
 
 	/**
@@ -42,7 +46,6 @@ public class DBUtil {
 	 * @param
 	 * @return
 	 */
-
 	public static void close(PreparedStatement pstmt, Connection con) {
 		if (pstmt != null)
 			try {
@@ -53,7 +56,7 @@ public class DBUtil {
 
 		if (con != null)
 			try {
-				pstmt.close();
+				con.close();
 			} catch (SQLException e) {
 				e.printStackTrace();
 			}
@@ -78,7 +81,7 @@ public class DBUtil {
 
 		if (con != null)
 			try {
-				pstmt.close();
+				con.close();
 			} catch (SQLException e) {
 				e.printStackTrace();
 			}

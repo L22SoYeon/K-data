@@ -8,94 +8,80 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class StudentManager {
-	// 학생 정보 추가
-	public int insert(Student s) throws SQLException {
-		Connection con = null;
-		PreparedStatement pstmt = null;
-		int result;
-		try {
-			// 2.
-			con = DBUtil.getConnection();
 
-			// 3. 4.
-			String sql = "insert into student values(?, ?, ?)";
+	Connection con = null;
+	PreparedStatement pstmt = null;
+	ResultSet rs = null;
+	int result = 0;
+
+	// ---------- 학생 정보 추가
+	public int insert(Student s) {
+		con = DBUtil.getConnection();
+
+		String sql = "insert into student values(?, ?, ?)";
+
+		try {
 			pstmt = con.prepareStatement(sql);
 
 			pstmt.setString(1, s.getsId());
 			pstmt.setString(2, s.getsName());
 			pstmt.setString(3, s.getSex());
 
-			// 5.
 			result = pstmt.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
 		} finally {
-			// 6.
 			DBUtil.close(pstmt, con);
-
 		}
 		return result;
 	}
 
-	// 학생 리스트 출력
-	public List<Student> selectAll() throws SQLException {
-
-		Connection con = null;
-		PreparedStatement pstmt = null;
-		ResultSet rs = null;
-
+	// ---------- 학생 정보 출력
+	public List<Student> selectAll() {
+		con = DBUtil.getConnection();
+		
 		List<Student> list = new ArrayList<>();
+
+		String sql = "select * from student";
+
 		try {
-
-			con = DBUtil.getConnection();
-			String sql = "select * from student";
 			pstmt = con.prepareStatement(sql);
-
 			rs = pstmt.executeQuery();
 
 			while (rs.next()) {
 				Student s = new Student(rs.getString("s_id"), rs.getString("s_name"), rs.getString("sex"));
-
-				// System.out.println(s.toString());
 				list.add(s);
 			}
-
+		} catch (SQLException e) {
+			e.printStackTrace();
 		} finally {
-
-			DBUtil.close(pstmt, con, rs);
-
+			DBUtil.close(pstmt, con);
 		}
 		return list;
-
 	}
 
-	// 학생 정보 검색
+	// ---------- 학생 정보 검색
 	public Student selectByName(String sName) {
-		Connection con = null;
-		PreparedStatement pstmt = null;
-		ResultSet rs = null;
+		con = DBUtil.getConnection();
+		
+		List<Student> list = new ArrayList<>();
 		Student s = null;
 
-		List<Student> list = new ArrayList<>();
+		String sql = "select * from student where s_name ='" + sName + "'";
 		try {
-
-			con = DBUtil.getConnection();
-			String sql = "select * from student where s_name ='" + sName + "'";
-
 			pstmt = con.prepareStatement(sql);
-
 			rs = pstmt.executeQuery();
+
 			if (rs.next()) {
 				s = new Student(rs.getString("s_id"), rs.getString("s_name"), rs.getString("sex"));
-
 				list.add(s);
-
 			}
-			DBUtil.close(pstmt, con, rs);
-			return s;
 		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
 			DBUtil.close(pstmt, con, rs);
-			return null;
 		}
-
+		return s;
 	}
 
 }
