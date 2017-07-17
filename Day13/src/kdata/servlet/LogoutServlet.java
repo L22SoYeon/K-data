@@ -1,8 +1,6 @@
 package kdata.servlet;
 
 import java.io.IOException;
-import java.io.PrintWriter;
-
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -11,16 +9,16 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 /**
- * Servlet implementation class main
+ * Servlet implementation class LogoutServlet
  */
-@WebServlet("/main")
-public class MainServlet extends HttpServlet {
+@WebServlet("/LogoutServlet")
+public class LogoutServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public MainServlet() {
+    public LogoutServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -31,25 +29,11 @@ public class MainServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		//response.getWriter().append("Served at: ").append(request.getContextPath());
-		response.setContentType("text/html; charset=UTF-8");
-		
-		PrintWriter out = response.getWriter();
 		HttpSession session = request.getSession();
 		
-		String idS = (String) session.getAttribute("id");
-		String nameS = (String) session.getAttribute("name");
+		session.invalidate();
 		
-		if(idS != null || nameS != null){
-			out.print(nameS + "(" + idS + ")´Ô È¯¿µÇÕ´Ï´Ù ");
-		}else{
-			
-			response.sendRedirect("login.html");	
-		}
-		
-		out.print("<a href='LogoutServlet'>·Î±×¾Æ¿ô</a>");
-		
-		
-		
+		response.sendRedirect("main");
 	}
 
 	/**

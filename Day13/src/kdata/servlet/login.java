@@ -8,6 +8,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 /**
  * Servlet implementation class login
@@ -43,12 +44,18 @@ public class login extends HttpServlet {
 		if (id.equals("test") && pwd.equals("1234")) {
 			System.out.println("로그인 성공");
 			out.print("로그인 성공");
+			
+			HttpSession session = request.getSession();
+			
+			session.setAttribute("id", id);
+			session.setAttribute("name", "이소연");
+			
 			response.sendRedirect("main");
 		} else {
 			System.out.println("로그인실패");
 			out.print("로그인 실패");
 			response.sendRedirect("login.html");
-			
+
 		}
 	}
 

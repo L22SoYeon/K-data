@@ -8,17 +8,14 @@
 </head>
 <body>
 <%
-String idS = (String) session.getAttribute("id");
-String nameS = (String) session.getAttribute("name");
+// 세션 개별 종료
+//session.removeAttribute("id");
+//session.removeAttribute("name");
 
-if(idS != null || nameS != null){
-	out.print(nameS + "(" + idS + ")님 환영합니다");
-}else{
+// 세션 한번에 종료(초기화)
+session.invalidate();
 	
-	response.sendRedirect("login.html");	
-}
+response.sendRedirect("main.jsp");
 %>
-
-<a href="logout.jsp">로그아웃</a>
 </body>
 </html>
