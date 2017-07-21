@@ -18,3 +18,18 @@ create table users
 -- kdata.project.dto
 
 SELECT * FROM USERS;
+
+create table board(
+num number primary key,
+id varchar2(10),
+subject varchar2(10),
+content varchar2(1000),
+write_data date default sysdate,
+read_count number default 0
+)
+
+create sequence board_seq
+start with 1
+increment by 1
+
+insert into board values(board_seq.nextval, 'test', 'æ»≥Á«œººø‰', 'æ»≥Á«œººø‰', default, default)
