@@ -2,6 +2,7 @@ package fithy.project.userservice;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import fithy.project.dao.UserDAO;
 import fithy.project.util.NextPage;
@@ -15,11 +16,12 @@ public class UserDeleteService implements Service {
 		System.out.println("UserDeleteService()");
 
 		// 1. 요청 파라미터 처리
-		String userId = request.getParameter("userId");
-		String userPw = request.getParameter("userPw");
+		HttpSession session = request.getSession();
 
+		String userId = (String) session.getAttribute("uId");
+		
 		// 2. DB 처리
-		int result = UserDAO.getInstance().userDelete(userId, userPw);
+		int result = UserDAO.getInstance().userDelete(userId);
 
 		// 4. 이동할 다음 페이지 처리
 		NextPage nextPage = new NextPage();

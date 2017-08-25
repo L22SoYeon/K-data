@@ -12,7 +12,7 @@ public class DBUtil {
 	public static String ID = "fithy";
 	public static String PASSWORD = "12345678";
 
-	public static Connection getConnet() {
+	public static Connection getConnect() {
 		try {
 			Class.forName(CLASS_NAME);
 			System.out.println("¼º°ø");

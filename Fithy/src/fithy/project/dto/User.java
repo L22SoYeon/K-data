@@ -1,55 +1,75 @@
 package fithy.project.dto;
 
-public class User {
+import java.io.Serializable;
+
+public class User implements Serializable{
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private String userCode;
 	private String userId;
 	private String userPw;
 	private String userName;
 	private String userGender;
-	private String userAge;
+	private String userDate;
 	private String userPhoneNum;
 	private String userAddress;
 	private String userFavoriteKind;
-
-	// DB에 insert 해주기 위해 만든 생성자 -----------------
-	public User(String userCode, String userId, String userPw, String userName, String userGender, String userAge,
-			String userPhoneNum, String userAddress, String userFavoriteKind) {
+	private String userJob;
+	
+	public User(String userCode, String userId, String userPw, String userName, String userGender, String userDate,
+			String userPhoneNum, String userAddress, String userFavoriteKind, String userJob) {
 		super();
 		this.userCode = userCode;
 		this.userId = userId;
 		this.userPw = userPw;
 		this.userName = userName;
 		this.userGender = userGender;
-		this.userAge = userAge;
+		this.userDate = userDate;
 		this.userPhoneNum = userPhoneNum;
 		this.userAddress = userAddress;
 		this.userFavoriteKind = userFavoriteKind;
-	}
+		this.userJob = userJob;
+	}//DB에 insert 해주기 위해 만든 생성자
 
-	// session 영역을 위해 만든 생성자 -------------------
 	public User(String userCode, String userId, String userName) {
 		super();
 		this.userCode = userCode;
 		this.userId = userId;
 		this.userName = userName;
-	}
+	}//session 영역에 회원코드, 회원아이디, 회원이름을 저장시키기위해 쓴 생성자
 
-	// 간략한 회원 정보를 저장하기 위해 만든 생성자 --------
-	public User(String userCode, String userId, String userName, String userPhoneNum, String userAddress) {
+	
+	
+	public User(String userName, String userGender, String userDate, String userPhoneNum, String userAddress,
+			String userFavoriteKind, String userJob) {
+		super();
+		this.userName = userName;
+		this.userGender = userGender;
+		this.userDate = userDate;
+		this.userPhoneNum = userPhoneNum;
+		this.userAddress = userAddress;
+		this.userFavoriteKind = userFavoriteKind;
+		this.userJob = userJob;
+	}//마이페이지에서 회원 상세 정보를 출력하기 위한 함수
+
+	
+	public User(String userCode, String userId, String userName, String userAddress, String userFavoriteKind) {
 		super();
 		this.userCode = userCode;
 		this.userId = userId;
 		this.userName = userName;
-		this.userPhoneNum = userPhoneNum;
 		this.userAddress = userAddress;
+		this.userFavoriteKind = userFavoriteKind;
 	}
 
-	// 로그인 비교 생성자 ----------------------------------
 	public User(String userId, String userPw) {
 		super();
 		this.userId = userId;
 		this.userPw = userPw;
-	}
+	}//로그인하는데 비교하는데 이용하려고 만든 생성자
+
 
 	public String getUserCode() {
 		return userCode;
@@ -78,9 +98,25 @@ public class User {
 	public String getUserName() {
 		return userName;
 	}
-
+	
 	public void setUserName(String userName) {
 		this.userName = userName;
+	}
+	
+	public String getUserAddress() {
+		return userAddress;
+	}
+
+	public void setUserAddress(String userAddress) {
+		this.userAddress = userAddress;
+	}
+
+	public String getUserPhoneNum() {
+		return userPhoneNum;
+	}
+
+	public void setUserPhoneNum(String userPhoneNum) {
+		this.userPhoneNum = userPhoneNum;
 	}
 
 	public String getUserGender() {
@@ -92,27 +128,11 @@ public class User {
 	}
 
 	public String getUserAge() {
-		return userAge;
+		return userDate;
 	}
 
-	public void setUserAge(String userAge) {
-		this.userAge = userAge;
-	}
-
-	public String getUserPhoneNum() {
-		return userPhoneNum;
-	}
-
-	public void setUserPhoneNum(String userPhoneNum) {
-		this.userPhoneNum = userPhoneNum;
-	}
-
-	public String getUserAddress() {
-		return userAddress;
-	}
-
-	public void setUserAddress(String userAddress) {
-		this.userAddress = userAddress;
+	public void setUserAge(String userDate) {
+		this.userDate = userDate;
 	}
 
 	public String getUserFavoriteKind() {
@@ -123,4 +143,13 @@ public class User {
 		this.userFavoriteKind = userFavoriteKind;
 	}
 
+	public String getUserJob() {
+		return userJob;
+	}
+
+	public void setUserJob(String userJob) {
+		this.userJob = userJob;
+	}
+	
+	
 }
